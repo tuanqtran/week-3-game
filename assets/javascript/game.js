@@ -1,6 +1,7 @@
 // Create the a-z list for tihe computer choices
-var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-        "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+// var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+//         "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var computerChoices = ["a", "b", "c", "d"];
 
 // var computerChoices = "abcdefghijklmnopqrstuvwxyz".split("");
 // Wins/Losses tally declaration set to 0
@@ -8,140 +9,46 @@ var wins = 0;
 var losses = 0;
 // Your guesses left so far set to 9 (Will decrement.)
 var guesses = 9;
+var guessesSoFar = userGuess;
 
 // Guess what letter I'm thinking of
 document.onkeyup = function(event){
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     
-    for (var i = guesses; i > 0; i--){
-        var guess = prompt("You have " + guesses + " guesses left.");
-
-        if (((userGuess == "a") && (computerGuess == "a")) || ((userGuess == "b") && (computerGuess == "b")) || 
-            ((userGuess == "c") && (computerGuess == "c")) || ((userGuess == "d") && (computerGuess == "d")) || 
-            ((userGuess == "e") && (computerGuess == "e")) || ((userGuess == "f") && (computerGuess == "f")) || 
-            ((userGuess == "g") && (computerGuess == "g")) || ((userGuess == "h") && (computerGuess == "h")) || 
-            ((userGuess == "i") && (computerGuess == "i")) || ((userGuess == "j") && (computerGuess == "j")) || 
-            ((userGuess == "k") && (computerGuess == "k")) || ((userGuess == "l") && (computerGuess == "l")) ||
-            ((userGuess == "m") && (computerGuess == "m")) || ((userGuess == "n") && (computerGuess == "n")) || 
-            ((userGuess == "o") && (computerGuess == "o")) || ((userGuess == "p") && (computerGuess == "p")) || 
-            ((userGuess == "q") && (computerGuess == "q")) || ((userGuess == "r") && (computerGuess == "r")) ||
-            ((userGuess == "s") && (computerGuess == "s")) || ((userGuess == "t") && (computerGuess == "t")) || 
-            ((userGuess == "u") && (computerGuess == "u")) || ((userGuess == "v") && (computerGuess == "v")) || 
-            ((userGuess == "w") && (computerGuess == "w")) || ((userGuess == "x") && (computerGuess == "x")) ||
-            ((userGuess == "y") && (computerGuess == "y")) || ((userGuess == "z") && (computerGuess == "z"))){
+        if (userGuess == computerGuess){
                 
-                win++
-                guesses = 0;
+                wins++
+                guesses = 9;
                 alert("My Guess: " + userGuess);
                 alert("Computer Guess: " + computerGuess);
 
-            }else if (((userGuess == "a") && !(computerGuess == "a")) || ((userGuess == "b") && !(computerGuess == "b")) || 
-            ((userGuess == "c") && !(computerGuess == "c")) || ((userGuess == "d") && !(computerGuess == "d")) || 
-            ((userGuess == "e") && !(computerGuess == "e")) || ((userGuess == "f") && !(computerGuess == "f")) || 
-            ((userGuess == "g") && !(computerGuess == "g")) || ((userGuess == "h") && !(computerGuess == "h")) || 
-            ((userGuess == "i") && !(computerGuess == "i")) || ((userGuess == "j") && !(computerGuess == "j")) || 
-            ((userGuess == "k") && !(computerGuess == "k")) || ((userGuess == "l") && !(computerGuess == "l")) ||
-            ((userGuess == "m") && !(computerGuess == "m")) || ((userGuess == "n") && !(computerGuess == "n")) || 
-            ((userGuess == "o") && !(computerGuess == "o")) || ((userGuess == "p") && !(computerGuess == "p")) || 
-            ((userGuess == "q") && !(computerGuess == "q")) || ((userGuess == "r") && !(computerGuess == "r")) ||
-            ((userGuess == "s") && !(computerGuess == "s")) || ((userGuess == "t") && !(computerGuess == "t")) || 
-            ((userGuess == "u") && !(computerGuess == "u")) || ((userGuess == "v") && !(computerGuess == "v")) || 
-            ((userGuess == "w") && !(computerGuess == "w")) || ((userGuess == "x") && !(computerGuess == "x")) ||
-            ((userGuess == "y") && !(computerGuess == "y")) || ((userGuess == "z") && !(computerGuess == "z"))){
+            }else if (guesses == 1){
 
-                guesses = guesses - 1;
+                losses++
+                guesses = 9;
                 alert("My Guess: " + userGuess);
                 alert("Computer Guess: " + computerGuess);
-        
-    }            
-    // while (guesses > 0){
-        // var guess = prompt("You have " + guesses + " guesses left.");
-        // if (!guess) break;
-            // }
 
+            }else{
 
-    }
+                guesses--
+                alert("My Guess: " + userGuess);
+                alert("Computer Guess: " + computerGuess);
+
+            }
+
 
 
             var html = "<h1>The Psychic Game</h1>" +
             "<p>Guess what letter I'm thinking of</p>" +
             "<p>Wins: " + wins + "</p>" +
             "<p>Losses: " + losses + "</p>" +
-            "<p>Guesses: " + guesses + "</p>";
+            "<p>Guesses left: " + guesses + "</p>" +
+            "<p>Your Guesses so far: " +  "</p>";
 
             document.querySelector(".game").innerHTML = html;
-
-}
-
-
-            // if (((userGuess == "a") && !(computerGuess == "a")) || ((userGuess == "b") && !(computerGuess == "b")) || 
-            //     ((userGuess == "c") && !(computerGuess == "c")) || ((userGuess == "d") && !(computerGuess == "d")) || 
-            //     ((userGuess == "e") && !(computerGuess == "e")) || ((userGuess == "f") && !(computerGuess == "f")) || 
-            //     ((userGuess == "g") && !(computerGuess == "g")) || ((userGuess == "h") && !(computerGuess == "h")) || 
-            //     ((userGuess == "i") && !(computerGuess == "i")) || ((userGuess == "j") && !(computerGuess == "j")) || 
-            //     ((userGuess == "k") && !(computerGuess == "k")) || ((userGuess == "l") && !(computerGuess == "l")) ||
-            //     ((userGuess == "m") && !(computerGuess == "m")) || ((userGuess == "n") && !(computerGuess == "n")) || 
-            //     ((userGuess == "o") && !(computerGuess == "o")) || ((userGuess == "p") && !(computerGuess == "p")) || 
-            //     ((userGuess == "q") && !(computerGuess == "q")) || ((userGuess == "r") && !(computerGuess == "r")) ||
-            //     ((userGuess == "s") && !(computerGuess == "s")) || ((userGuess == "t") && !(computerGuess == "t")) || 
-            //     ((userGuess == "u") && !(computerGuess == "u")) || ((userGuess == "v") && !(computerGuess == "v")) || 
-            //     ((userGuess == "w") && !(computerGuess == "w")) || ((userGuess == "x") && !(computerGuess == "x")) ||
-            //     ((userGuess == "y") && !(computerGuess == "y")) || ((userGuess == "z") && !(computerGuess == "z"))){
-            //     // if ((userGuess == "abcdefghijklmnopqrstuvwxyz".split("")) && !(computerGuess == "abcdefghijklmnopqrstuvwxyz".split(""))){
-
-            //     losses++
-            //     alert("My Guess: " + userGuess);
-            //     alert("Computer Guess: " + computerGuess);
-
-            // }else if (((userGuess == "a") && (computerGuess == "a")) || ((userGuess == "b") && (computerGuess == "b")) || 
-            //     ((userGuess == "c") && (computerGuess == "c")) || ((userGuess == "d") && (computerGuess == "d")) || 
-            //     ((userGuess == "e") && (computerGuess == "e")) || ((userGuess == "f") && (computerGuess == "f")) || 
-            //     ((userGuess == "g") && (computerGuess == "g")) || ((userGuess == "h") && (computerGuess == "h")) || 
-            //     ((userGuess == "i") && (computerGuess == "i")) || ((userGuess == "j") && (computerGuess == "j")) || 
-            //     ((userGuess == "k") && (computerGuess == "k")) || ((userGuess == "l") && (computerGuess == "l")) ||
-            //     ((userGuess == "m") && (computerGuess == "m")) || ((userGuess == "n") && (computerGuess == "n")) || 
-            //     ((userGuess == "o") && (computerGuess == "o")) || ((userGuess == "p") && (computerGuess == "p")) || 
-            //     ((userGuess == "q") && (computerGuess == "q")) || ((userGuess == "r") && (computerGuess == "r")) ||
-            //     ((userGuess == "s") && (computerGuess == "s")) || ((userGuess == "t") && (computerGuess == "t")) || 
-            //     ((userGuess == "u") && (computerGuess == "u")) || ((userGuess == "v") && (computerGuess == "v")) || 
-            //     ((userGuess == "w") && (computerGuess == "w")) || ((userGuess == "x") && (computerGuess == "x")) ||
-            //     ((userGuess == "y") && (computerGuess == "y")) || ((userGuess == "z") && (computerGuess == "z"))){
-            //     // }else if ((userGuess == "abcdefghijklmnopqrstuvwxyz".split("")) && (computerGuess == "abcdefghijklmnopqrstuvwxyz".split(""))){
-                
-            //     wins++
-            //     alert("My Guess: " + userGuess);
-            //     alert("Computer Guess: " + computerGuess);
-                
-            // }else{
-            //     alert("Invalid Letter");
-            //     alert("My Guess: " + userGuess);
-            //     alert("Computer Guess: " + computerGuess);               
-
-            // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 
 
