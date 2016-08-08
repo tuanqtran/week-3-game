@@ -1,7 +1,6 @@
 // Create the a-z list for tihe computer choices
-// var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-//         "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var computerChoices = ["a", "b", "c", "d"];
+var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+        "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // var computerChoices = "abcdefghijklmnopqrstuvwxyz".split("");
 // Wins/Losses tally declaration set to 0
@@ -9,48 +8,47 @@ var wins = 0;
 var losses = 0;
 // Your guesses left so far set to 9 (Will decrement.)
 var guesses = 9;
-var guessesSoFar = userGuess;
+var guessesSoFar = [];
 
 // Guess what letter I'm thinking of
 document.onkeyup = function(event){
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    
+
         if (userGuess == computerGuess){
                 
                 wins++
                 guesses = 9;
-                alert("My Guess: " + userGuess);
-                alert("Computer Guess: " + computerGuess);
+                guessesSoFar = [];
+                // alert("My Guess: " + userGuess);
+                // alert("Computer Guess: " + computerGuess);
 
             }else if (guesses == 1){
 
                 losses++
                 guesses = 9;
-                alert("My Guess: " + userGuess);
-                alert("Computer Guess: " + computerGuess);
+                guessesSoFar = [];
+                // alert("My Guess: " + userGuess);
+                // alert("Computer Guess: " + computerGuess);
 
             }else{
 
                 guesses--
-                alert("My Guess: " + userGuess);
-                alert("Computer Guess: " + computerGuess);
+                guessesSoFar.push(userGuess);
+                // alert("My Guess: " + userGuess);
+                // alert("Computer Guess: " + computerGuess);
 
             }
-
-
 
             var html = "<h1>The Psychic Game</h1>" +
             "<p>Guess what letter I'm thinking of</p>" +
             "<p>Wins: " + wins + "</p>" +
             "<p>Losses: " + losses + "</p>" +
             "<p>Guesses left: " + guesses + "</p>" +
-            "<p>Your Guesses so far: " +  "</p>";
+            "<p>Your Guesses so far: " +  guessesSoFar + "</p>";
 
             document.querySelector(".game").innerHTML = html;
         }
-
-
 
 //Making sure the user chooses a-z
 
