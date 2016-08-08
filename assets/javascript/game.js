@@ -26,45 +26,47 @@ document.onkeyup = function(event){
         (userGuess == 'v') || (userGuess == 'w') || (userGuess == 'x') ||
         (userGuess == 'y') || (userGuess == 'z')){
 
+// Search entire array for letter that's pressed. If shown stop entirely. If not skip and go straight to the next if.
+// If key is pressed (do not updated guess. stop entirely.)
+
         if (userGuess == computerGuess){
-                
-                wins++
-                guesses = 9;
-                guessesSoFar = [];
-                // alert("My Guess: " + userGuess);
-                // alert("Computer Guess: " + computerGuess);
+        	
+        	wins++
+            guesses = 9;
+            guessesSoFar = [];
+            // alert("My Guess: " + userGuess);
+            // alert("Computer Guess: " + computerGuess);
 
-            }else if (guesses == 1){
+        }else if (guesses == 1){
 
-                losses++
-                guesses = 9;
-                guessesSoFar = [];
-                // alert("My Guess: " + userGuess);
-                // alert("Computer Guess: " + computerGuess);
-
-            }else{
-
-                guesses--
-                guessesSoFar.push(userGuess);
-                // alert("My Guess: " + userGuess);
-                // alert("Computer Guess: " + computerGuess);
-
-            }
-
-            var html = "<h1>The Psychic Game</h1>" +
-
-            "<p>Guess what letter I'm thinking of</p>" +
-            // # of times the user has guessed the letter correctly
-            "<p>Wins: " + wins + "</p>" +
-            // # of times the user has failed to guess the letter correctly after exhausting all guesses
-            "<p>Losses: " + losses + "</p>" +
-            // # of guesses left.
-            "<p>Guesses left: " + guesses + "</p>" +
-            // The specific letters that the user typed. Display these until the user either wins or loses.
-            "<p>Your Guesses so far: " +  guessesSoFar + "</p>";
-
-            document.querySelector(".game").innerHTML = html;
+        	losses++
+            guesses = 9;
+            guessesSoFar = [];
+            // alert("My Guess: " + userGuess);
+            // alert("Computer Guess: " + computerGuess);
         }else{
-            alert("Invalid letter. Please type a letter from a-z.");
-        }
+
+        	guesses--
+        	guessesSoFar.push(userGuess);
+            // alert("My Guess: " + userGuess);
+            // alert("Computer Guess: " + computerGuess);
+
+        	// }
+    	}
+
+	    var html = "<h1>The Psychic Game</h1>" +
+	    "<p>Guess what letter I'm thinking of</p>" +
+	    // # of times the user has guessed the letter correctly
+	    "<p>Wins: " + wins + "</p>" +
+	    // # of times the user has failed to guess the letter correctly after exhausting all guesses
+	    "<p>Losses: " + losses + "</p>" +
+	    // # of guesses left.
+	    "<p>Guesses left: " + guesses + "</p>" +
+	    // The specific letters that the user typed. Display these until the user either wins or loses.
+	    "<p>Your Guesses so far: " +  guessesSoFar + "</p>";
+
+	    document.querySelector(".game").innerHTML = html;
+		}else{
+			alert("Invalid letter. Please type a letter from a-z.");
+		}
     }
