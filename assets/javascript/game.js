@@ -15,6 +15,17 @@ document.onkeyup = function(event){
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+
+// Search entire array for letter that's pressed. If shown stop entirely. If not skip and go straight to the next if.
+// If key is pressed (do not updated guess. stop entirely.)
+    function lettersUsed(){
+        for (var i = 0; i < guessesSoFar.length; i++){
+            if (guessesSoFar.indexOf(guessesSoFar[i]) > - 1){
+                alert("Checking if function works when the same letter is pressed");
+            }
+        }
+    }
+
     //Making sure the user chooses a-z
     if ((userGuess == 'a') || (userGuess == 'b') || (userGuess == 'c') ||
         (userGuess == 'd') || (userGuess == 'e') || (userGuess == 'f') ||
@@ -26,8 +37,6 @@ document.onkeyup = function(event){
         (userGuess == 'v') || (userGuess == 'w') || (userGuess == 'x') ||
         (userGuess == 'y') || (userGuess == 'z')){
 
-// Search entire array for letter that's pressed. If shown stop entirely. If not skip and go straight to the next if.
-// If key is pressed (do not updated guess. stop entirely.)
 
         if (userGuess == computerGuess){
         	
