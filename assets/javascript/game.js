@@ -57,15 +57,19 @@ document.onkeyup = function(event){
         }else{
             // Create a loop that will compare the entire guessesSoFar array with the userGuess.
             // If userGuess is inside the guessesSoFar array, alert duplicate letter.
-            for(var n = 0; n < guessesSoFar.length; n++){
-                if(userGuess.indexOf(guessesSoFar[n]) > -1){
+            console.log("UserGuess before the for loop: " + userGuess);
+            for(var n = 0; n > guessesSoFar.length; n++){
+                if(guessesSoFar.indexOf(userGuess) != -1){
+                    alert("Duplicate letter was pressed. Please try again.")
+                    console.log("UserGuess within the the for loop if statement: " + userGuess);
+
+                }else{
                     guesses--
                     guessesSoFar.push(userGuess);
-                    console.log(userGuess);
-                }else{
-                    alert("Duplicate letter was pressed. Please try again.")
+                    console.log("UserGuess within the the for loop else statement: " + userGuess);
                 }
             }
+            console.log("UserGuess after the for loop: " + userGuess);
         }
     // Alerts user if a invalid letter is pressed.
     }else{
