@@ -24,7 +24,6 @@ function computerGuessReset(){
 document.onkeyup = function(event){
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-
     // Makes sure the user chooses a letter between a-z.
     if ((userGuess == 'a') || (userGuess == 'b') || (userGuess == 'c') ||
         (userGuess == 'd') || (userGuess == 'e') || (userGuess == 'f') ||
@@ -55,21 +54,18 @@ document.onkeyup = function(event){
             console.log("-------------------------");
         // Decrements guesses when userGuess != computerGuess.
         }else{
-            // Create a loop that will compare the entire guessesSoFar array with the userGuess.
-            // If userGuess is inside the guessesSoFar array, alert duplicate letter.
-            console.log("UserGuess before the for loop: " + userGuess);
-            for(var n = 0; n > guessesSoFar.length; n++){
-                if(guessesSoFar.indexOf(userGuess) != -1){
-                    alert("Duplicate letter was pressed. Please try again.")
-                    console.log("UserGuess within the the for loop if statement: " + userGuess);
-
-                }else{
-                    guesses--
-                    guessesSoFar.push(userGuess);
-                    console.log("UserGuess within the the for loop else statement: " + userGuess);
-                }
+            // Check if the userGuess is not within the guessesSoFar.
+            if(guessesSoFar.indexOf(userGuess) != -1){
+                alert("Duplicate letter was pressed. Please try again.")
+                console.log("UserGuess within the the for loop if statement: " + userGuess);
+                console.log("-------------------------");
+            // If userGuess is inside the guessesSoFar array, decrement guesses and push userGuess into guessesSoFar.
+            }else{
+                guesses--
+                guessesSoFar.push(userGuess);
+                console.log("UserGuess within the the for loop else statement: " + userGuess);
+                console.log("-------------------------");
             }
-            console.log("UserGuess after the for loop: " + userGuess);
         }
     // Alerts user if a invalid letter is pressed.
     }else{
