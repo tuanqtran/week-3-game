@@ -22,7 +22,7 @@ function computerGuessReset(){
 
 // Takes user key press and turns it into variable userGuess.
 document.onkeyup = function(event){
-    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
     // Makes sure the user chooses a letter between a-z.
     if ((userGuess == 'a') || (userGuess == 'b') || (userGuess == 'c') ||
